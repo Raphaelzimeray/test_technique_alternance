@@ -17,7 +17,7 @@ class TeamsController < ApplicationController
   def create
     @team = Team.create(teams_params)
       if @team.save
-        redirect_to  reparation_path(@team)
+        redirect_to  team_path(@team)
       else
         render :new
       end
@@ -33,9 +33,9 @@ class TeamsController < ApplicationController
     redirect_to teams_path, notice: '8 teams with 11 players each have been generated.'
   end
 
-  private 
+  private
 
   def teams_params
-    params.require(:teams).permit(:name, :city)
+    params.require(:team).permit(:name, :city)
   end
 end
