@@ -1,0 +1,20 @@
+<h1>New Player</h1>
+
+<%= form_with model: @player do |form| %>
+  <div class="mb-4">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: "form-input mt-1 block w-full" %>
+  </div>
+
+  <div class="mb-4">
+    <%= form.label :role %>
+    <%= form.select :role, ['Heal', 'Tank', 'DPS'], {}, class: "form-select block w-full mt-1" %>
+  </div>
+
+  <div class="mb-4">
+    <%= form.label :team %>
+    <%= form.collection_select :team_id, Team.all, :id, :name, {}, class: "form-select block w-full mt-1" %>
+  </div>
+
+  <%= form.submit "Create Player", class: "btn btn-primary" %>
+<% end %>
